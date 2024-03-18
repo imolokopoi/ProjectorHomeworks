@@ -29,27 +29,14 @@ const movies = [
 	},
 ];
 function byProperty(property, direction) {
-  if (direction === '>') {
-    return function (a, b) {
-      if (a[property] > b[property]) {
-        return 1;
-      }
-      if (a[property] < b[property]) {
-        return -1;
-      }
-      return 0;
+  return direction === '>' ?
+    function (a, b) {
+      return a[property] > b[property] ? 1 : a[property] < b[property] ? -1 : 0;
+    } :
+    function (a, b) {
+      return a[property] < b[property] ? 1 : a[property] > b[property] ? -1 : 0;
     };
-  } else {
-    return function (a, b) {
-      if (a[property] < b[property]) {
-        return 1;
-      }
-      if (a[property] > b[property]) {
-        return -1;
-      }
-      return 0;
-    };
-  }
+}
    
       
       
