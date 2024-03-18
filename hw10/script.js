@@ -43,7 +43,14 @@ const userNames = ['Петро', 'Емма', 'Петро', 'Емма', 'Март
 const userNames = ['Петро', 'Емма', 'Петро', 'Емма', 'Марта', 'Яна', 'Василь', 'Антон', 'Олена', 'Емма'];
 
 function filterUnique(array) {
-    return [...new Set(array)].map(value => value);
+    const uniqueValues = [];
+    for (let i = 0; i < array.length; i++) {
+        if (!uniqueValues.includes(array[i])) {
+            uniqueValues.push(array[i]);
+        }
+    }
+    return uniqueValues;
 }
+
 
 //console.log(filterUnique(userNames)); // ['Петро', 'Емма', 'Марта', 'Яна', 'Василь', 'Антон', 'Олена'];
