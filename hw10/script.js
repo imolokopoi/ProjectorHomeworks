@@ -1,6 +1,6 @@
 "use strict"
 //задача 1
-(startDate = '01 Jan 1992', endDate = '01 Jan 1993', dimension = 'days') {
+function durationBetweenDates(startDate = '01 Jan 1992', endDate = '01 Jan 1993', dimension = 'days') {
     const start = new Date(startDate);
     const end = new Date(endDate);
 
@@ -8,13 +8,11 @@
     //    return 'Invalid date format';
     //}
 
-    const timeDifference = end - start;
-
     const timeDifference = Math.abs(end - start); // Використовуємо Math.abs() для отримання абсолютної різниці у часі
 
     const dimensionFunctions = {
         'days': () => Math.floor(timeDifference / (1000 * 60 * 60 * 24)),
-        'seconds': () => Math.floor(timeDifference / 1000)
+        'seconds': () => Math.floor(timeDifference / 1000),
         'hours': () => Math.floor(timeDifference / (1000 * 60 * 60)),
         'minutes': () => Math.floor(timeDifference / (1000 * 60)),
     };
@@ -26,6 +24,7 @@
         return 'Invalid dimension';
     }
 }
+
    
 
 const result1 = durationBetweenDates('02 Aug 1985', '03 Aug 1985', 'seconds');
@@ -43,13 +42,7 @@ const userNames = ['Петро', 'Емма', 'Петро', 'Емма', 'Март
 const userNames = ['Петро', 'Емма', 'Петро', 'Емма', 'Марта', 'Яна', 'Василь', 'Антон', 'Олена', 'Емма'];
 
 function filterUnique(array) {
-    const uniqueValues = [];
-    for (let i = 0; i < array.length; i++) {
-        if (!uniqueValues.includes(array[i])) {
-            uniqueValues.push(array[i]);
-        }
-    }
-    return uniqueValues;
+    return array.filter((value, index, self) => self.indexOf(value) === index);
 }
 
 
