@@ -29,13 +29,10 @@ const movies = [
 	},
 ];
 function byProperty(property, direction) {
-  return direction === '>' ?
-    function (a, b) {
-      return a[property] > b[property] ? 1 : a[property] < b[property] ? -1 : 0;
-    } :
-    function (a, b) {
-      return a[property] < b[property] ? 1 : a[property] > b[property] ? -1 : 0;
-    };
+  return function (a, b) {
+    const comparison = a[property] > b[property] ? 1 : a[property] < b[property] ? -1 : 0;
+    return direction === '>' ? comparison : -comparison;
+  };
 }
    
       
