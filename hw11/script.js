@@ -28,26 +28,30 @@ const movies = [
 		runningTimeInMinutes: 107,
 	},
 ];
-
-      function ascendingComparison(a, b) {
-        return a - b;
+function byProperty(property, direction) {
+  if (direction === '>') {
+    return function (a, b) {
+      if (a[property] > b[property]) {
+        return 1;
       }
+      if (a[property] < b[property]) {
+        return -1;
+      }
+      return 0;
+    };
+  } else {
+    return function (a, b) {
+      if (a[property] < b[property]) {
+        return 1;
+      }
+      if (a[property] > b[property]) {
+        return -1;
+      }
+      return 0;
+    };
+  }
+   
       
-      function descendingComparison(a, b) {
-        return b - a;
-      }
-      
-      function byProperty(property, direction) {
-        if (direction === '>') {
-          return function (a, b) {
-            return ascendingComparison(a[property], b[property]);
-          };
-        } else {
-          return function (a, b) {
-            return descendingComparison(a[property], b[property]);
-          };
-        }
-      }
       
       console.log(movies.sort(byProperty('releaseYear', '>')));
       console.log(movies.sort(byProperty('runningTimeInMinutes', '<')));
